@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date</title>
+
+    <!-- 这个要保留 -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        *::before,
+        *::after {
+            content: '';
+        }
+
+        body {
+            width: 100vw;
+            min-width: 600px;
+            height: 100vh;
+            min-height: 200px;
+            background: #010;
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock {
+            background: #000;
+            width: calc(350px * 1.5);
+            height: calc(100px * 1.5);
+        }
+
+        .clock>p {
+            padding: 7.5px;
+            filter: hue-rotate(240deg);
+        }
+    </style>
+    <!-- <style> 后两个中只需要一个 -->
+    <!-- 极简 -->
+    <style>
+        .clock {
+            text-align: center;
+            font-size: calc(30px * 1.5);
+            position: relative;
+            border: rgba(255, 255, 255, .75) 1px solid;
+        }
+
+        .clock::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, .5);
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+    </style>
+    <!-- 复杂点的 -->
+    <style>
+        .clock {
+            position: relative;
+            border: rgba(0, 255, 0, .5) 5px solid;
+            border-radius: 100px;
+            padding: 10px;
+        }
+
+        .clock::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: rgba(0, 255, 0, 1);
+            filter: blur(.75px);
+            -webkit-filter: blur(.75px);
+            position: absolute;
+            top: 50%;
+            left: 0;
+        }
+
+        .clock::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 255, 0, 1);
+            filter: blur(100px);
+            -webkit-filter: blur(100px);
+            z-index: -10;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <p id="date">
+            date
+        </p>
+        <p id="time">
+            time
+        </p>
+    </div>
+    <script>
+        var $date = document.querySelector("#date");
+        var $time = document.querySelector("#time");
+
+        function date(date_el, time_el, week, twelveHours) {
+            // 获取当前日期
+            let currentDate = new Date();
+
+            week = Boolean(week)
+            twelveHours = Boolean(twelveHours)
+
+            let currentWeek = {
+                1: '星期一',
+                2: '星期二',
+                3: '星期三',
+                4: '星期四',
+                5: '星期五',
+                6: '星期六',
+                7: '星期日'
+            }
+            // 获取日期
+
+            // 年月日
+            let Y = currentDate.getFullYear();
+            let M = currentDate.getMonth() + 1;
+            let D = currentDate.getDate();
+
+            // 星期
+            let d = currentWeek[currentDate.getDay()];
+
+            // 时分秒
+            let h = currentDate.getHours();
+            let m = currentDate.getMinutes();
+            let s = currentDate.getSeconds();
+
+            if (!week) {
+                d = ''
+            }
+
+            let day_night = "";
+            if (twelveHours) {
+                // 计算上午与下午
+                day_night = "上午";//上午
+
+                // 计算上午与下午
+                if (h > 12) {
+                    h = h - 12;
+                    day_night = "下午";//下午
+                }
+
+                // 如果时间小于10则前面补充0
+                if (h < 10) { h = "0" + h; }
+                if (m < 10) { m = "0" + m; }
+                if (s < 10) { s = "0" + s; }
+            }
+
+            // 拼接时间并且赋值给date元素的文本中,从而显示
+            let date = Y + '年' + M + '月' + D + '日';
+            let time = h + ":" + m + ":" + s + " ";
+            date_el.textContent = date + ' ' + d;
+            time_el.textContent = time + ' ' + day_night;
+
+        }
+
+        date($date, $time, true, true);
+        setInterval(() => {
+            date($date, $time, true, true);
+        }, 100);
+    </script>
+</body>
+
+</html>

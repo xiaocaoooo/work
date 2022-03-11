@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a cake</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            background: #000;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #cake {
+            font-size: 100vmin;
+            width: 1em;
+            height: 1em;
+            /* border: green 1px solid; */
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; */
+        }
+
+        #cake .cake-candleBox {
+            position: relative;
+            width: .3em;
+            height: .25em;
+            margin: auto;
+        }
+
+        #cake .cake-candleBox .cake-candle {
+            position: absolute;
+            width: .05em;
+            height: .15em;
+            bottom: 0;
+            background: #f00;
+        }
+
+        #cake .cake-candleBox .cake-candle:nth-child(1) {
+            left: 0;
+        }
+
+        #cake .cake-candleBox .cake-candle:nth-child(2) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #cake .cake-candleBox .cake-candle:nth-child(3) {
+            right: 0;
+        }
+
+        #cake .cake-candleBox .cake-candle::before {
+            content: '';
+            position: absolute;
+            width: .075em;
+            height: .075em;
+            border-radius: 100% 0% 51% 48% / 57% 0% 100% 43%;
+            background: linear-gradient(to left bottom, #f00, #ffa500, #ff0);
+            bottom: .15em;
+            left: 50%;
+            transform: translate(-50%, -10%) rotate(315deg);
+        }
+
+        #cake .cake-floor {
+            width: var(--w);
+            height: .25em;
+            margin: auto;
+            background: #ff0;
+            border-top-left-radius: .025em;
+            border-top-right-radius: .025em;
+            position: relative;
+        }
+
+        #cake .cake-floor p {
+            font-size: .15em;
+            text-height: .25em;
+        }
+
+        #cake .cake-floor .cake-candle {
+            position: absolute;
+            width: .05em;
+            height: .15em;
+            bottom: .25em;
+            background: #f00;
+        }
+
+        #cake .cake-floor .cake-candle::before {
+            content: '';
+            position: absolute;
+            width: .075em;
+            height: .075em;
+            border-radius: 100% 0% 51% 48% / 57% 0% 100% 43%;
+            background: linear-gradient(to left bottom, #f00, #ffa500, #ff0);
+            bottom: .15em;
+            left: 50%;
+            transform: translate(-50%, -10%) rotate(315deg);
+        }
+
+        #cake .cake-floor .cake-candle:nth-child(1) {
+            left: .05em;
+        }
+
+        #cake .cake-floor .cake-candle:nth-child(2) {
+            right: .05em;
+        }
+
+        #bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to bottom, #000 33.33%, #0000 66.67%);
+            background-size: 100% 300%;
+            background-position: 0 0;
+            z-index: 100;
+            transition: 3s all ease-in-out;
+        }
+
+        #bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(to top, #000 33.33%, #0000 66.67%);
+            background-size: 100% 300%;
+            background-position: 0 100%;
+            z-index: 100;
+            transition: 3s all ease-in-out;
+        }
+
+        #bg.active {
+            background-position: 0 100%;
+        }
+
+        #bg.active::before {
+            background-position: 0 0;
+        }
+
+        #bg.active,
+        #bg.active::before {
+            animation: bg .1s 3s ease-in-out;
+        }
+
+        @keyframes bg {
+            100% {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg"></div>
+    <audio src="./生日快乐.mp3" loop></audio>
+    <div id="cake">
+        <div class="cake-candleBox">
+            <div class="cake-candle"></div>
+            <div class="cake-candle"></div>
+            <div class="cake-candle"></div>
+        </div>
+        <div class="cake-floor" style="--w: .5em;"></div>
+        <div class="cake-floor" style="--w: .75em;">
+            <div class="cake-candle"></div>
+            <div class="cake-candle"></div>
+        </div>
+        <div class="cake-floor" style="--w: 1em;text-align: center;">
+            <p>爸爸生日快乐</p>
+            <!-- <div class="cake-candle"></div>
+            <div class="cake-candle"></div> -->
+        </div>
+    </div>
+    <script>
+        const $audio = document.querySelector('audio');
+        const $bg = document.getElementById('bg');
+        const a = true;
+        //play/pause song
+        $bg.addEventListener("click", () => {
+            if (a) {
+                $audio.play();
+                $bg.classList = 'active';
+                a = false;
+            };
+        });
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (a && e && e.keyCode == 32) {
+                $audio.play();
+                $bg.classList = 'active';
+                a = false;
+            };
+        };
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bilibili</title>
+    <style>
+        :root {
+            --color: rgba(0, 161, 214, 1);
+            font-size: 1px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .bilibili>div {
+            font-size: 1px;
+        }
+
+        .bilibili {
+            border: 5rem solid var(--color);
+            border-radius: 10rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) scale(10);
+            width: 75rem;
+            height: 50rem;
+        }
+
+        .bilibili>.a,
+        .bilibili>.b {
+            border-radius: 10rem;
+            height: 25rem;
+            width: 5rem;
+            background: var(--color);
+            position: absolute;
+            bottom: 100%;
+        }
+
+        .bilibili>.a {
+            right: 50%;
+            transform: rotate(-45deg) translateX(-70%);
+        }
+
+        .bilibili>.b {
+            left: 50%;
+            transform: rotate(45deg) translateX(70%);
+        }
+
+        .bilibili>.c,
+        .bilibili>.d {
+            top: 50%;
+            border-radius: 10rem;
+            height: 15rem;
+            width: 10rem;
+            background: var(--color);
+            position: absolute;
+        }
+
+        .bilibili>.c {
+            left: 15%;
+            transform: translate(2.5rem,-50%);
+        }
+
+        .bilibili>.d {
+            right: 15%;
+            transform: translate(-2.5rem,-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bilibili">
+        <div class="a"></div>
+        <div class="b"></div>
+
+        <div class="c"></div>
+        <div class="d"></div>
+    </div>
+</body>
+
+</html>

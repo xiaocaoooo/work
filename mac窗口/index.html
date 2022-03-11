@@ -1,0 +1,152 @@
+<!-- 记得三连哦！ -->
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        .bigBox {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eee;
+        }
+
+        .box {
+            width: 50%;
+            height: 50%;
+            border-radius: 20px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .box>.t {
+            width: 95%;
+            height: 7.5%;
+            display: flex;
+        }
+
+        .box>.t>.t_box>.t_ {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin: 5px;
+            position: relative;
+        }
+
+        .box>.t>.t_box>.t_::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box>.t>.t_box>.t_::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .box>.t>.t_box {
+            display: flex;
+        }
+
+        .box>.t>.t_box>.t_::before,
+        .box>.t>.t_box>.t_::after {
+            opacity: 0;
+        }
+
+        .box>.t>.t_box:hover>.t_::before,
+        .box>.t>.t_box:hover>.t_::after {
+            opacity: 1;
+        }
+
+        .box>.t>.t_box>.a {
+            background: rgb(255, 95, 87);
+        }
+
+        .box>.t>.t_box>.a::before {
+            transform: translate(-50%, -50%) rotate(45deg);
+            width: 2px;
+            height: 15px;
+            background: #000;
+        }
+
+        .box>.t>.t_box>.a::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 2px;
+            height: 15px;
+            background: #000;
+        }
+
+        .box>.t>.t_box>.b {
+            background: rgb(254, 188, 46);
+        }
+
+        .box>.t>.t_box>.b::before {
+            transform: translate(-50%, -50%) rotate(90deg);
+            width: 2px;
+            height: 15px;
+            background: #000;
+        }
+
+        .box>.t>.t_box>.c {
+            background: rgb(40, 200, 64);
+        }
+
+        .box>.t>.t_box>.c::before {
+            transform: translate(-50%, -50%) rotate(0deg);
+            width: 2px;
+            height: 15px;
+            background: #000;
+        }
+
+        .box>.t>.t_box>.c::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+            width: 2px;
+            height: 15px;
+            background: #000;
+        }
+
+        .box>.main {
+            background: #eee;
+            width: 95%;
+            height: 82.5%;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bigBox">
+        <div class="box">
+            <div class="t">
+                <div class="t_box">
+                    <div class="t_ a"></div>
+                    <div class="t_ b"></div>
+                    <div class="t_ c"></div>
+                </div>
+            </div>
+            <div class="main"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-- 记得三连哦！ -->

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>
+        <input type="checkbox" class="checkbox">
+    </label>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        input.checkbox {
+            outline: none;
+            margin: 0;
+            padding: 0;
+            border: none;
+            appearance: none;
+            background-color: rgba(100, 100, 100, 1);
+            border-radius: 50px;
+            width: 175px;
+            height: 80px;
+            position: relative;
+            transition: all .5s ease-in-out;
+        }
+
+        input.checkbox::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            transition: all .5s ease-in-out;
+        }
+
+        input.checkbox::before {
+            content: '';
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: #fff;
+            transition: all .5s ease-in-out;
+        }
+
+        input.checkbox:checked {
+            background: rgba(0, 200, 0, 1);
+        }
+
+        input.checkbox:checked::after {
+            left: 105px;
+        }
+
+        input.checkbox:checked::before {
+            background: #333;
+        }
+    </style>
+</body>
+
+</html>

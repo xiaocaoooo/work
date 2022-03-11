@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+
+    <title>微信</title>
+</head>
+
+<body>
+    <div class="wx">
+        <!--  -->
+        <header>
+            <div>你</div>
+        </header>
+        <!--  -->
+        <main>
+            <div class="m">
+                <div class="t">你三连了吗?</div>
+                <div class="h"></div>
+            </div>
+            <div class="y">
+                <div class="h"></div>
+                <div class="t">没有。</div>
+            </div>
+            <div class="m">
+                <div class="t">那你快去！</div>
+                <div class="h"></div>
+            </div>
+            <div class="m">
+                <div class="t">好了吗？</div>
+                <div class="h"></div>
+            </div>
+            <div class="y">
+                <div class="h"></div>
+                <div class="t">好了</div>
+            </div>
+        </main>
+        <footer>
+            <input type="text">
+            <button>发送</button>
+        </footer>
+    </div>
+    <!--  -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .wx {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #eee;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            background: #e2e2e2;
+            border: 1px solid #555;
+            box-sizing: border-box;
+        }
+
+        footer {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            font-size: 30px;
+        }
+
+        footer button {
+            width: 100px;
+            font-size: 30px;
+            color: #333;
+            outline: none;
+            background: #00af00;
+            border: none;
+            border-radius: 15px;
+        }
+
+        footer input {
+            flex: 1 1 auto;
+            box-sizing: border-box;
+            margin: 0 5px;
+            outline: none;
+            border: 1px solid #555;
+            background: #fafafa;
+            border-radius: 15px;
+        }
+        main{
+            flex: 1 1 auto;
+        }
+        main div {
+            clear: both;
+            max-width: 85%;
+            margin: 5px;
+        }
+        main div div{
+            display: inline-block;
+        }
+        main div .h{
+            width: 25px;height: 25px;
+            background: #000;
+        }
+        main div .t{
+            padding: 5px;
+            font-size: 20px;
+            position: relative;
+            border-radius: 5px;
+        }
+        main div .t::after{
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 5px;
+            transform: rotate(45deg);
+        }
+        main .m{
+            float: right;
+        }
+        main .m .t{
+            background: #00af00;
+        }
+        main .m .t::after{
+            background: #00af00;
+            bottom: -5px;
+        }
+        main .y{
+            float: left;
+        }
+        main .y .t{
+            background: #e2e2e2;
+        }
+        main .y .t::after{
+            background: #e2e2e2;
+            left: -5px;
+        }
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圣诞树</title>
+    <style>
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        ::after,
+        ::before {
+            content: '';
+        }
+
+        #christmasTree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(100px);
+        }
+
+        #christmasTree .star {
+            margin: 50px 0;
+            position: relative;
+            display: block;
+            color: #eeee00;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid #eeee00;
+            border-left: 100px solid transparent;
+            transform: rotate(35deg) scale(.75);
+        }
+
+        #christmasTree .star:before {
+            content: '';
+            border-bottom: 80px solid #eeee00;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            position: absolute;
+            height: 0;
+            width: 0;
+            top: -45px;
+            left: -65px;
+            display: block;
+            transform: rotate(-35deg);
+        }
+
+        #christmasTree .star:after {
+            content: '';
+            position: absolute;
+            display: block;
+            color: #eeee00;
+            top: 3px;
+            left: -105px;
+            width: 0px;
+            height: 0px;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid #eeee00;
+            border-left: 100px solid transparent;
+            transform: rotate(-70deg);
+        }
+
+        #christmasTree .star .star {
+            filter: blur(25px);
+            opacity: .5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            --from-transform: translate(-50%, -50%) scale(1);
+            --to-transform: translate(-50%, -50%) scale(2);
+            transform: var(--from-transform);
+            animation: 3s flash ease-in-out infinite;
+        }
+
+        #christmasTree .triangle {
+            z-index: 5;
+            width: 0;
+            height: 0;
+            border: 100px transparent solid;
+            border-top-width: 0;
+            border-bottom-color: #00ee00;
+        }
+
+        #christmasTree .triangle.a,
+        #christmasTree .triangle.b,
+        #christmasTree .triangle.c,
+        #christmasTree .triangle.d {
+            transform: translateY(calc(0px - var(--border-width) * 0.75));
+            border-left-width: var(--border-width);
+            border-right-width: var(--border-width);
+            border-bottom-width: var(--border-width);
+        }
+
+        #christmasTree .triangle.a {
+            --border-width: 100px;
+        }
+
+        #christmasTree .triangle.b {
+            --border-width: 150px;
+        }
+
+        #christmasTree .triangle.c {
+            --border-width: 200px;
+        }
+
+        #christmasTree .triangle.d {
+            --border-width: 250px;
+        }
+
+        #christmasTree .trunk {
+            width: 100px;
+            height: 200px;
+            transform: translateY(-250px);
+            background: #783200;
+        }
+
+        #christmasTree .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(farthest-corner at 25% 25%, #ffffff, var(--bg));
+            z-index: 20;
+            box-shadow: 0 0 10px 10px rgba(255, 255, 255, .5);
+            animation: 3s circleFlash ease-in-out infinite;
+        }
+
+        /* .circle::before {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background: var(--bg);
+            opacity: .25;
+            filter: blur(5px);
+            --from-transform: translate(-50%, -50%) scale(1);
+            --to-transform: translate(-50%, -50%) scale(2);
+            transform: var(--from-transform);
+            animation: 3s flash ease-in-out infinite;
+            z-index: 12;
+        } */
+
+        #christmasTree .circle::after {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: #000000;
+            opacity: .5;
+            filter: blur(1px);
+            z-index: 17;
+        }
+
+        #snowBox .snow {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #ffffff;
+            opacity: 0;
+            animation: NSnow var(--duration) linear infinite;
+        }
+
+        #snowBox {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .bottom {
+            width: 100vw;
+            height: 10px;
+            background: #ffffff;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+        }
+
+        @keyframes flash {
+
+            0%,
+            100% {
+                transform: var(--from-transform);
+            }
+
+            50% {
+                transform: var(--to-transform);
+            }
+        }
+
+        @keyframes circleFlash {
+
+            0%,
+            100% {
+                box-shadow: 0 0 25px 10px rgba(255, 255, 255, .5);
+            }
+
+            50% {
+                box-shadow: 0 0 25px 30px rgba(255, 255, 255, .5);
+            }
+        }
+
+        @keyframes NSnow {
+            0% {
+                opacity: 1;
+                top: 0;
+            }
+
+            100% {
+                opacity: 1;
+                top: 100vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="christmasTree">
+        <div class="star">
+            <div class="star"></div>
+        </div>
+        <div class="triangle a"></div>
+        <div class="triangle b"></div>
+        <div class="triangle c"></div>
+        <div class="triangle d"></div>
+        <div class="trunk"></div>
+        <!--
+            <div class="circle"></div>
+        -->
+        <!-- https://dl.stream.qqmusic.qq.com/C400002hROSm2ybGGF.m4a?guid=5823442938&vkey=FC8D834BA272A3DD6C42709917B4425EBA88103AE094680D78AFE6B17B38155EF39FE3BBCDDD25A7555A34079C42D3C90DE5F3B8658117DC&uin=&fromtag=66 -->
+    </div>
+    <div id="snowBox">
+        <!-- <div class="snow"></div> -->
+    </div>
+    <div class="bottom"></div>
+    <script>
+        function random(n) {
+            return Math.random() * n;
+        }
+
+        function randomColor() {
+            a = 10 + random(100) + random(10) + random(10) + random(10) + random(10);
+            b = 10 + random(100) + random(10) + random(10) + random(10) + random(10);
+            c = 10 + random(100) + random(10) + random(10) + random(10) + random(10);
+            res = `rgba(${a}, ${b}, ${c}, 1)`;
+            return res;
+        }
+
+        function randomX() {
+            res = 200 + random(100);
+            return res;
+        }
+
+        function randomY() {
+            res = random(500) + 200;
+            return res;
+        }
+
+        function initHTML() {
+            for (i = 0; i < 10; i++) {
+                $christmasTree.innerHTML += `
+                <div 
+                class="circle" 
+                style="
+                --bg: ${color[i % color.length]};
+                top: ${randomY()}px;
+                left: ${randomX()}px;
+                animation-delay: ${random(2.5)}s;
+                "></div>
+                `;
+            }
+            for (i = 0; i < 250; i++) {
+                $snowBox.innerHTML += `
+                <div 
+                class="snow" 
+                style="
+                left: ${random(100)}vw;
+                animation-delay: ${random(10)}s;
+                --duration: ${random(5) + 1}s;
+                "></div>
+                `;
+            }
+        }
+        var $christmasTree = document.getElementById('christmasTree');
+        var $snowBox = document.getElementById('snowBox');
+        var color = [
+            randomColor(),
+            randomColor(),
+            randomColor(),
+            randomColor(),
+            randomColor(),
+            randomColor()
+        ];
+        var i;
+        initHTML();
+    </script>
+</body>
+
+</html>

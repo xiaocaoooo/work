@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>头像</title>
+    <style>
+        *,
+        ::before,
+        ::after {
+            padding: 0;
+            margin: 0;
+            content: '';
+        }
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+        }
+
+        .ga {
+            font-size: .2vmin;
+            width: 500em;
+            height: 500em;
+            background:
+                linear-gradient(to bottom,
+                    #3e3 25%,
+                    #851 25%);
+            position: relative;
+        }
+
+        .ga::before {
+            content: '';
+            /* background: transparent; */
+            /* background: #eee; */
+            /* background: #eee5; */
+            font-size: 25em;
+            width: 1em;
+            height: 1em;
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-shadow:
+                1em 1em #0a0,
+                2em 2em #0a0,
+                18em 1em #0a0,
+                17em 2em #0a0,
+
+                4em 8em #0e0,
+                4.5em 8em #0e0,
+                4em 8.8em #0e0,
+                4em 9em #0e0,
+                4.5em 9em #0e0,
+                5em 8em #0e0,
+                5em 8.5em #0e0,
+                5em 9em #0e0,
+
+
+                14em 9em #0e0,
+                14.5em 9em #0e0,
+                14em 9.5em #0e0,
+                14em 10em #0e0,
+                14.5em 10em #0e0,
+                15em 9em #0e0,
+                15em 9.5em #0e0,
+                15em 10em #0e0,
+
+
+                3em 13em #0e0,
+                4em 14em #0e0,
+                5em 15em #0e0,
+                6em 16em #0e0,
+
+                7em 17em #0e0,
+                7.5em 17em #0e0,
+                8em 17em #0e0,
+                8.5em 17em #0e0,
+                9em 17em #0e0,
+                9.5em 17em #0e0,
+                10em 17em #0e0,
+                10.5em 17em #0e0,
+                11em 17em #0e0,
+                11.5em 17em #0e0,
+                12em 17em #0e0,
+
+                13em 16em #0e0,
+                14em 15em #0e0,
+                15em 14em #0e0,
+                16em 13em #0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ga"></div>
+</body>
+
+</html>
